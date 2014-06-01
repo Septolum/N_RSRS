@@ -1,3 +1,8 @@
+import sys
+if sys.version_info>(2,9,9):
+  sys.stderr.write("I won't work with Python 3. Try using Python 2.7\n")
+  exit(1)
+
 from modules import *
 import os
 

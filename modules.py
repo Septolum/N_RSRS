@@ -39,7 +39,7 @@ def write_recipe(title_text, ingredients_text, equipment_text, prep_time_text, c
 	xml = ET.ElementTree(root)
 	xml.write("./Recipes/" + filename + ".xml")
 
-def read_recipe(filename):
+def read_recipe("./Recipes/" + filename):
 	"Prints file and imports it as current tree"
 	root = ET.ElementTree(file=(filename + ".xml"))
 	elem = root.getroot()

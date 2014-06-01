@@ -42,7 +42,7 @@ def read_response():
 	print
 	file = raw_input("Which Recipe would you like to read?\n").lower()
 	print
-	read_recipe("./Recipes/" + file)
+	read_recipe(file)
 	top_response()
 
 def write_response():

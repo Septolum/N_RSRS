@@ -1,0 +1,9 @@
+<root>
+  <title>1</title>
+  <ingredients>2</ingredients>
+  <equipment>3</equipment>
+  <prep_time>4</prep_time>
+  <cook_time>5</cook_time>
+  <method>6</method>
+  <tags>7</tags>
+</root>

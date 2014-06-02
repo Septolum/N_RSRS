@@ -42,7 +42,10 @@ def read_response():
 	print
 	file = raw_input("Which Recipe would you like to read?\n").lower()
 	print
-	read_recipe(file)
+	if file in os.listdir("./Recipes"):
+		read_recipe(file)
+	else:
+		print "That file does not exist.\n"
 	top_response()
 
 def write_response():

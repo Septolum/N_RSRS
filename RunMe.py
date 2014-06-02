@@ -42,8 +42,8 @@ def read_response():
 	for item in os.listdir("./Recipes"):
 		print (ca.Fore.RESET + item[:-4])
 	print ca.Fore.CYAN
-	file = raw_input("Which Recipe would you like to read?\n")
-	print
+	file = raw_input("Which Recipe would you like to read?\n" + ca.Fore.RESET)
+	print ca.Fore.CYAN
 	if (file + ".xml") in os.listdir("./Recipes"):
 		print ca.Fore.RESET
 		read_recipe(file)

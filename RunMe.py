@@ -55,15 +55,18 @@ def read_response():
 def write_response():
 	title_text = raw_input("What is the recipe's title?\n" + ca.Fore.RESET)
 	print ca.Fore.CYAN
-	ingredients_text = raw_input("What is the recipe's ingredients? (Make an new line with \"\\n\")\n" + ca.Fore.RESET)
+	print ("What is the recipe's ingredients? (Make an new line with enter/return, when you've finished make an empty newline and press Ctrl + D (You might have to press it twice) or Ctrl + Z on Windows (just press it once then press enter/return again, dont worry, it won't save the '^Z' character))\n" + ca.Fore.RESET)
+	ingredients_text = "".join(sys.stdin.readlines())[0:-1]
 	print ca.Fore.CYAN
-	equipment_text = raw_input("What equipment is needed? (Make an new line with \"\\n\")\n" + ca.Fore.RESET)
+	print ("What equipment is needed? (Make an new line with enter/return, when you've finished make an empty newline and press Ctrl + D (You might have to press it twice) or Ctrl + Z on Windows (just press it once then press enter/return again, dont worry, it won't save the '^Z' character))\n" + ca.Fore.RESET)
+	equipment_text = "".join(sys.stdin.readlines())[0:-1]
 	print ca.Fore.CYAN
 	prep_time_text = raw_input("How long will it take to prepare it?\n" + ca.Fore.RESET)
 	print ca.Fore.CYAN
 	cook_time_text = raw_input("How long will it take to cook?\n" + ca.Fore.RESET)
 	print ca.Fore.CYAN
-	method_text = raw_input("What is the method? (Make an new line with \"\\n\")\n" + ca.Fore.RESET)
+	print ("What is the method? (Make an new line with enter/return, when you've finished make an empty newline and press Ctrl + D (You might have to press it twice) or Ctrl + Z on Windows (just press it once then press enter/return again, dont worry, it won't save the '^Z' character))\n" + ca.Fore.RESET)
+	method_text = "".join(sys.stdin.readlines())[0:-1]
 	print ca.Fore.CYAN
 	tags_text = raw_input("What tags would you like to add? (Separate with spaces, used for searching, include things such as country of origin, author, season, etc...)\n" + ca.Fore.RESET)
 	print ca.Fore.CYAN

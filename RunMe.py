@@ -1,6 +1,6 @@
 import sys
-if sys.version_info>(2,9,9):
-  sys.stderr.write("I won't work with Python 3. Try using Python 2.7\n")
+if sys.version_info>(2,8,0):
+  sys.stderr.write("I won't work with this version of Python. Try using Python 2.7\n")
   exit(1)
 
 from modules import *
@@ -85,6 +85,6 @@ print (ca.Fore.CYAN + ca.Back.BLUE + ca.Style.BRIGHT + """
 | Nat's Recipe Storage & Retrieval System |
 +-----------------------------------------+
 """)
-print (ca.Back.RESET + ca.Fore.RESET + "Welcome to Nat's Recipe Storage & Retrieval System\n\nWritten in Python using the ElementTrees module for handling XML")
+print (ca.Back.RESET + ca.Fore.RESET + "Welcome to Nat's Recipe Storage & Retrieval System\n\nWritten in Python using the ElementTrees module for handling XML\nColours by " + ca.Fore.RED + "C" + ca.Fore.BLUE + "o" + ca.Fore.GREEN + "l" + ca.Fore.YELLOW + "o" + ca.Fore.MAGENTA + "r" + ca.Fore.CYAN + "a" + ca.Fore.RED + "m" + ca.Fore.BLUE + "a")
 print ("\n\n" + ca.Fore.CYAN)
 top_response()

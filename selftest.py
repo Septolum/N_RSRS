@@ -11,4 +11,4 @@ filename = "selftest"
 
 write_recipe(title_text, ingredients_text, equipment_text, prep_time_text, cook_time_text, method_text, tags_text, filename)
 
-read_recipe(filename)
+print read_recipe(filename)

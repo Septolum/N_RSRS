@@ -46,7 +46,7 @@ def read_response():
 	print ca.Fore.CYAN
 	if (file + ".xml") in os.listdir("./Recipes"):
 		print ca.Fore.RESET
-		read_recipe(file)
+		print read_recipe(file)
 		print ca.Fore.CYAN
 	else:
 		print (ca.Fore.RED + "That file does not exist.\n" + ca.Fore.CYAN)

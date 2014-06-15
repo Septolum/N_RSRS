@@ -14,6 +14,12 @@ To-Do List:
  - [ ] Edit
  - [ ] Search
 - [ ] GUI
+ - [ ] Android GUI (Using SL4A and dialog boxes)
+  - [x] Read
+  - [x] Write
+  - [x] Edit
+  - [ ] Search
+  - [ ] Delete
 - [ ] Binary (?)
 
 ================================

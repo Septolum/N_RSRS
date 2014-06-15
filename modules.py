@@ -50,7 +50,17 @@ def read_recipe(filename):
 #		print node.text
 #		print
 # ^ Debug Stuff	
+	retur = ""
 	for i in [0,1,2,3,4,5,6]:
-		print headers[i] + elem[i].text
-		print
+		retur += headers[i] + elem[i].text
+		retur += "\n\n"
+	return retur
 
+def edit_recipe(filename):
+	root = ET.ElementTree(file=("./Recipes/" + filename + ".xml"))
+	elem = root.getroot()
+	indent(elem)
+	list = []
+	for i in [0,1,2,3,4,5,6]:
+		list.append(elem[i].text)
+	return list

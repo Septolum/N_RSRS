@@ -8,18 +8,18 @@ Written in Python using the ElementTrees module for handling XML
 Just a little summer project. Started it because there was no software that did what I wanted without all the faffing about.
 
 To-Do List:
-- [ ] Basic Functions
+- [ ] Command Line Interface
  - [x] Read
  - [x] Write
  - [ ] Edit
  - [ ] Search
-- [ ] GUI
- - [ ] Android GUI (Using SL4A and dialog boxes)
+- [ ] Android GUI (Using SL4A and dialog boxes)
   - [x] Read
   - [x] Write
   - [x] Edit
   - [ ] Search
-  - [ ] Delete
+  - [x] Delete
+- [ ] Multiplatform GUI
 - [ ] Binary (?)
 
 ================================

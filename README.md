@@ -8,6 +8,13 @@ Written in Python using the ElementTrees module for handling XML
 Just a little summer project. Started it because there was no software that did what I wanted without all the faffing about.
 
 To-Do List:
+
+Python:
+- [x] Modules
+ - [x] Read
+ - [x] Write
+ - [x] Edit
+ - [x] Search (kinda)
 - [ ] Command Line Interface
  - [x] Read
  - [x] Write
@@ -19,8 +26,13 @@ To-Do List:
   - [x] Edit
   - [ ] Search
   - [x] Delete
-- [ ] Multiplatform GUI
-- [ ] Binary (?)
+
+Java (!):
+- [ ] Modules
+ - [ ] Read
+ - [ ] Write
+ - [ ] Edit
+ - [ ] Search
 
 ================================
 

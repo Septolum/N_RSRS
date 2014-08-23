@@ -1,4 +1,5 @@
 import elementtree.ElementTree as ET
+import os
 def indent(elem, level=0):
     i = "\n" + level*"  "
     if len(elem):
@@ -64,3 +65,13 @@ def edit_recipe(filename):
 	for i in [0,1,2,3,4,5,6]:
 		list.append(elem[i].text)
 	return list
+def search_recipes(string, header_index):
+	item_list = []
+	for item in range(len(os.listdir("./Recipes"))):
+		root = ET.ElementTree(file=("./Recipes/" + os.listdir("./Recipes")[item]))
+		elem = root.getroot()
+		indent(elem)
+		print r"%s" % " ".join([string, "==", elem[header_index].text])
+		if (string == elem[header_index].text) == True:
+			item_list.append(str(os.listdir("./Recipes")[item])[0:-4])
+	print item_list

@@ -71,7 +71,7 @@ def search_recipes(string, header_index):
 		root = ET.ElementTree(file=("./Recipes/" + os.listdir("./Recipes")[item]))
 		elem = root.getroot()
 		indent(elem)
-		print r"%s" % " ".join([string, "==", elem[header_index].text])
-		if (string == elem[header_index].text) == True:
+		print string, "in", elem[header_index].text
+		if (string.lower() in elem[header_index].text.lower()) == True:
 			item_list.append(str(os.listdir("./Recipes")[item])[0:-4])
-	print item_list
+	return item_list

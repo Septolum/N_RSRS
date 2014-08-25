@@ -52,12 +52,12 @@ def top_menu():
 
 	if response == {u'item' : 1}:
 		for i in [0,1,2,3,4,5,6]:
-			droid.dialogGetInput("Write", ((headers[i])[0:-1] + " (type '\\n' for a new line)"))
+			droid.dialogGetInput("Write", ((headers[i])[0:-1] + " (type '/n' for a new line)"))
 			if str(droid.dialogGetResponse().result)[13:21] != "positive":
 				droid.dialogDismiss()
 				top_menu()
 			else:
-				headers[i] = str(droid.dialogGetResponse().result)[36:-2]
+				headers[i] = (str(droid.dialogGetResponse().result)[36:-2]).replace('/n', '\n')
 				print headers[i]
 			droid.dialogDismiss()
 		droid.dialogGetInput("Write", "Filename")
@@ -93,12 +93,12 @@ def top_menu():
 		list = edit_recipe(items[int(str(response)[10:-1])])
 		print list
 		for i in [0,1,2,3,4,5,6]:
-			droid.dialogGetInput("Edit", ((headers[i])[0:-1] + " (type '\\n' for a new line)"), list[i])
+			droid.dialogGetInput("Edit", ((headers[i])[0:-1] + " (type '/n' for a new line)"), (list[i]).replace('\n', '/n'))
 			if str(droid.dialogGetResponse().result)[13:21] != "positive":
 				droid.dialogDismiss()
 				top_menu()
 			else:
-				list[i] = str(droid.dialogGetResponse().result)[36:-2]
+				list[i] = ((str(droid.dialogGetResponse().result)[36:-2])).replace('/n', '\n')
 				print list[i]
 			droid.dialogDismiss()
 		filename = (items[int(str(response)[10:-1])])
@@ -116,7 +116,34 @@ def top_menu():
 		top_menu()
 
 	if response == {u'item' : 3}:
-		NYI()
+		droid.dialogCreateAlert("Which field would you like search in?")
+		droid.dialogSetItems(headers)
+		droid.dialogShow()
+		response = droid.dialogGetResponse().result
+		droid.dialogDismiss()
+		print response
+		print str(response)[-2:-1]
+		if response == {u'canceled': True}:
+			top_menu()
+		index = int(str(response)[-2:-1])
+		print index
+		droid.dialogDismiss()
+		droid.dialogGetInput("What would you like to search?", "Search String:")
+		droid.dialogShow()
+		response = droid.dialogGetResponse().result
+		droid.dialogDismiss()
+		print response
+		print str(response)[36:-2]
+		if str(response)[13:21] != "positive":
+			top_menu()
+		string = "\n".join(search_recipes(str(response)[36:-2], index))
+		droid.dialogCreateAlert("Recipes With Matches:", string)
+		droid.dialogSetNeutralButtonText(ok)
+		droid.dialogShow()
+		response = droid.dialogGetResponse().result
+		print response
+		droid.dialogDismiss()
+		droid.dialogDismiss()
 		top_menu()
 
 	if response == {u'item' : 4}:

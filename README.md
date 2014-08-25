@@ -8,13 +8,11 @@ Written in Python using the ElementTrees module for handling XML
 Just a little summer project. Started it because there was no software that did what I wanted without all the faffing about.
 
 To-Do List:
-
-Python:
 - [x] Modules
  - [x] Read
  - [x] Write
  - [x] Edit
- - [x] Search (kinda)
+ - [x] Search
 - [ ] Command Line Interface
  - [x] Read
  - [x] Write
@@ -24,15 +22,14 @@ Python:
   - [x] Read
   - [x] Write
   - [x] Edit
-  - [ ] Search
+  - [x] Search
   - [x] Delete
-
-Java (!):
-- [ ] Modules
- - [ ] Read
- - [ ] Write
- - [ ] Edit
- - [ ] Search
+ - [ ] Desktop OS GUI
+  - [ ] Read
+  - [ ] Write
+  - [ ] Edit
+  - [ ] Search
+  - [ ] Delete
 
 ================================
 

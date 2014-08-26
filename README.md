@@ -24,12 +24,12 @@ To-Do List:
   - [x] Edit
   - [x] Search
   - [x] Delete
- - [ ] Desktop OS GUI
-  - [ ] Read
-  - [ ] Write
-  - [ ] Edit
-  - [ ] Search
-  - [ ] Delete
+- [ ] Desktop OS GUI
+ - [ ] Read
+ - [ ] Write
+ - [ ] Edit
+ - [ ] Search
+ - [ ] Delete
 
 ================================
 

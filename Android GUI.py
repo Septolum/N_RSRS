@@ -143,7 +143,6 @@ def top_menu():
 		response = droid.dialogGetResponse().result
 		print response
 		droid.dialogDismiss()
-		droid.dialogDismiss()
 		top_menu()
 
 	if response == {u'item' : 4}:
@@ -172,5 +171,9 @@ def top_menu():
 	if response == {u'item' : 5} or response == {u'canceled' : True}:
 		droid.makeToast("Bye! :)")
 		sys.exit()
+
+droid.notify("N_RSRS", "If you can't see N_RSRS, close it using a task killer and then re-open it")
+droid.notify("N_RSRS", "Tapping these notifications will make them go away, but will not close N_RSRS")
+
 
 top_menu()

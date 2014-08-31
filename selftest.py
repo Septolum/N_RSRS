@@ -6,9 +6,11 @@ equipment_text = " A computer\n Reference Material\n Food"
 prep_time_text = " Until Stable"
 cook_time_text = " Until Perfect (Indefinitely then...)" 
 method_text = "Add all ingredients and mix thoroughly"
-tags_text = "Programming Python Laptop"
+tags_text = "Programming Python Laptop Test"
 filename = "selftest"
 
 write_recipe(title_text, ingredients_text, equipment_text, prep_time_text, cook_time_text, method_text, tags_text, filename)
 
 print read_recipe(filename)
+
+print search_recipes("test", 6)

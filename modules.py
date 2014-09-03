@@ -75,3 +75,6 @@ def search_recipes(string, header_index):
 		if (string.lower() in elem[header_index].text.lower()) == True:
 			item_list.append(str(os.listdir("./Recipes")[item])[0:-4])
 	return item_list
+
+def get_recipe_dir():
+	return os.getcwd().replace('\\', '/') + "/Recipes/"

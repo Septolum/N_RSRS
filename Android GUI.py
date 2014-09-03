@@ -136,8 +136,19 @@ def top_menu():
 		print str(response)[36:-2]
 		if str(response)[13:21] != "positive":
 			top_menu()
-		string = "\n".join(search_recipes(str(response)[36:-2], index))
-		droid.dialogCreateAlert("Recipes With Matches:", string)
+#		string = "\n".join(search_recipes(str(response)[36:-2], index))
+		string = search_recipes(str(response)[36:-2], index)
+		droid.dialogCreateAlert("Recipes With Matches:")
+#		droid.dialogCreateAlert("Recipes With Matches:", string)
+#		droid.dialogSetNeutralButtonText(ok)
+		droid.dialogSetItems(search_recipes(str(response)[36:-2], index))
+		droid.dialogShow()
+		if droid.dialogGetResponse().result == {u'canceled': True}:
+			top_menu()
+		response = droid.dialogGetResponse().result
+		print response
+		droid.dialogDismiss()
+		droid.dialogCreateAlert("Recipe:", read_recipe(string[int(str(response)[10:-1])])[0:-2])
 		droid.dialogSetNeutralButtonText(ok)
 		droid.dialogShow()
 		response = droid.dialogGetResponse().result
@@ -174,6 +185,7 @@ def top_menu():
 
 droid.notify("N_RSRS", "If you can't see N_RSRS, close it using a task killer and then re-open it")
 droid.notify("N_RSRS", "Tapping these notifications will make them go away, but will not close N_RSRS")
+droid.notify("N_RSRS", "Your recipes are stored in: " + get_recipe_dir())
 
 
 top_menu()

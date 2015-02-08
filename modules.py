@@ -1,19 +1,21 @@
-import elementtree.ElementTree as ET
+import xml.etree.ElementTree as ET
 import os
+
 def indent(elem, level=0):
-    i = "\n" + level*"  "
-    if len(elem):
-        if not elem.text or not elem.text.strip():
-            elem.text = i + "  "
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-        for elem in elem:
-            indent(elem, level+1)
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-    else:
-        if level and (not elem.tail or not elem.tail.strip()):
-            elem.tail = i
+	"Indents the given loaded xml tree so it looks pretty raw"
+	i = "\n" + level*"  "
+	if len(elem):
+		if not elem.text or not elem.text.strip():
+			elem.text = i + "  "
+		if not elem.tail or not elem.tail.strip():
+			elem.tail = i
+		for elem in elem:
+			indent(elem, level+1)
+		if not elem.tail or not elem.tail.strip():
+			elem.tail = i
+	else:
+		if level and (not elem.tail or not elem.tail.strip()):
+			elem.tail = i
 
 headers = ["Title: ", "Ingredients: \n", "Equipment: \n", "Preparation Time: \n", "Cooking Time: \n", "Method: \n", "Tags: \n"]
 	
@@ -41,7 +43,7 @@ def write_recipe(title_text, ingredients_text, equipment_text, prep_time_text, c
 	xml.write("./Recipes/" + filename + ".xml")
 
 def read_recipe(filename):
-	"Prints file and imports it as current tree"
+	"Returns file as a string(?) and imports it as current tree"
 	root = ET.ElementTree(file=("./Recipes/" + filename + ".xml"))
 	elem = root.getroot()
 	indent(elem)
@@ -58,23 +60,29 @@ def read_recipe(filename):
 	return retur
 
 def edit_recipe(filename):
+	"Returns file as a list separated by header"
 	root = ET.ElementTree(file=("./Recipes/" + filename + ".xml"))
 	elem = root.getroot()
 	indent(elem)
 	list = []
 	for i in [0,1,2,3,4,5,6]:
 		list.append(elem[i].text)
-	return list
+	return list
+
 def search_recipes(string, header_index):
+	"Returns a list of files which contain the specified string in the specified header"
 	item_list = []
-	for item in range(len(os.listdir("./Recipes"))):
-		root = ET.ElementTree(file=("./Recipes/" + os.listdir("./Recipes")[item]))
+	ls_rec = os.listdir("./Recipes")
+	for item in range(len(ls_rec)):
+		root = ET.ElementTree(file=("./Recipes/" + ls_rec[item]))
 		elem = root.getroot()
 		indent(elem)
 		print string, "in", elem[header_index].text
 		if (string.lower() in elem[header_index].text.lower()) == True:
-			item_list.append(str(os.listdir("./Recipes")[item])[0:-4])
+			item_list.append(str(ls_rec[item])[0:-4])
 	return item_list
 
 def get_recipe_dir():
+	"Gets the folder the recipes are stored in"
 	return os.getcwd().replace('\\', '/') + "/Recipes/"
+	

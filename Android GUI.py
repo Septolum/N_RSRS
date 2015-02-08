@@ -5,14 +5,46 @@ import os
 from time import sleep
 import sys
 
+#define code saving functions
+
+def readsellist():
+	droid.dialogSetItems(items)
+	droid.dialogShow()
+	if droid.dialogGetResponse().result == {u'canceled': True}:
+		top_menu()
+	response = droid.dialogGetResponse().result
+	print response
+	droid.dialogDismiss()
+	droid.dialogCreateAlert("Recipe:", read_recipe(items[int(str(response)[10:-1])])[0:-2])
+	droid.dialogSetNeutralButtonText(ok)
+	droid.dialogShow()
+	response = droid.dialogGetResponse().result
+	print response
+	droid.dialogDismiss()
+	top_menu()
+
+def valrec():
+	droid.dialogCreateAlert("Valid Recipes: ")
+	items = []
+	for item in os.listdir("./Recipes"):
+		items.append(item[0:-4])
+	droid.dialogSetItems(items)
+	droid.dialogShow()
+	if droid.dialogGetResponse().result == {u'canceled': True}:
+		top_menu()
+
+#init
+		
 ok = "Ok"
 
+"""
 def NYI():
 	droid.dialogCreateAlert("Sorry", "That feature is not yet implemented :(")
 	droid.dialogSetNeutralButtonText(ok)
 	droid.dialogShow()
 	response = droid.dialogGetResponse().result
 	droid.dialogDismiss()
+"""
 
 droid.dialogCreateAlert("Welcome to", "Nat's Recipe Storage & Retrieval System\n\nWritten in Python")
 droid.dialogSetNeutralButtonText(ok)
@@ -30,27 +62,14 @@ def top_menu():
 	droid.dialogDismiss()
 	print response
 
-	if response == {u'item' : 0}:
+	if response == {u'item' : 0}: #Read
 		droid.dialogCreateAlert("Valid Recipes: ")
 		items = []
 		for item in os.listdir("./Recipes"):
 			items.append(item[0:-4])
-		droid.dialogSetItems(items)
-		droid.dialogShow()
-		if droid.dialogGetResponse().result == {u'canceled': True}:
-			top_menu()
-		response = droid.dialogGetResponse().result
-		print response
-		droid.dialogDismiss()
-		droid.dialogCreateAlert("Recipe:", read_recipe(items[int(str(response)[10:-1])])[0:-2])
-		droid.dialogSetNeutralButtonText(ok)
-		droid.dialogShow()
-		response = droid.dialogGetResponse().result
-		print response
-		droid.dialogDismiss()
-		top_menu()
+		readsellist()
 
-	if response == {u'item' : 1}:
+	if response == {u'item' : 1}: #Write
 		for i in [0,1,2,3,4,5,6]:
 			droid.dialogGetInput("Write", ((headers[i])[0:-1] + " (type '/n' for a new line)"))
 			if str(droid.dialogGetResponse().result)[13:21] != "positive":
@@ -78,15 +97,8 @@ def top_menu():
 		droid.dialogDismiss()
 		top_menu()
 
-	if response == {u'item' : 2}:
-		droid.dialogCreateAlert("Valid Recipes: ")
-		items = []
-		for item in os.listdir("./Recipes"):
-			items.append(item[0:-4])
-		droid.dialogSetItems(items)
-		droid.dialogShow()
-		if droid.dialogGetResponse().result == {u'canceled': True}:
-			top_menu()
+	if response == {u'item' : 2}: #Edit
+		valrec()
 		response = droid.dialogGetResponse().result
 		print response
 		droid.dialogDismiss()
@@ -115,7 +127,7 @@ def top_menu():
 		droid.dialogDismiss()
 		top_menu()
 
-	if response == {u'item' : 3}:
+	if response == {u'item' : 3}: #Search
 		droid.dialogCreateAlert("Which field would you like search in?")
 		droid.dialogSetItems(headers)
 		droid.dialogShow()
@@ -137,34 +149,14 @@ def top_menu():
 		if str(response)[13:21] != "positive":
 			top_menu()
 #		string = "\n".join(search_recipes(str(response)[36:-2], index))
-		string = search_recipes(str(response)[36:-2], index)
+		items = search_recipes(str(response)[36:-2], index)
 		droid.dialogCreateAlert("Recipes With Matches:")
 #		droid.dialogCreateAlert("Recipes With Matches:", string)
 #		droid.dialogSetNeutralButtonText(ok)
-		droid.dialogSetItems(search_recipes(str(response)[36:-2], index))
-		droid.dialogShow()
-		if droid.dialogGetResponse().result == {u'canceled': True}:
-			top_menu()
-		response = droid.dialogGetResponse().result
-		print response
-		droid.dialogDismiss()
-		droid.dialogCreateAlert("Recipe:", read_recipe(string[int(str(response)[10:-1])])[0:-2])
-		droid.dialogSetNeutralButtonText(ok)
-		droid.dialogShow()
-		response = droid.dialogGetResponse().result
-		print response
-		droid.dialogDismiss()
-		top_menu()
+		readsellist()
 
-	if response == {u'item' : 4}:
-		droid.dialogCreateAlert("Valid Recipes: ")
-		items = []
-		for item in os.listdir("./Recipes"):
-			items.append(item[0:-4])
-		droid.dialogSetItems(items)
-		droid.dialogShow()
-		if droid.dialogGetResponse().result == {u'canceled': True}:
-			top_menu()
+	if response == {u'item' : 4}: #Delete
+		valrec()
 		file = items[int(str(droid.dialogGetResponse().result)[10:-1])]
 		print file
 		droid.dialogDismiss()
